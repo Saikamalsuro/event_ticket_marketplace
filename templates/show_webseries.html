@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Web Series</title>
+</head>
+<body>
+    <h2>Web Series List</h2>
+    <ul>
+        {% for web_series in web_series_list %}
+            <li>
+                <h3>{{ web_series.title }}</h3>
+                <p>Description: {{ web_series.description }}</p>
+                <p>Genre: {{ web_series.genre }}</p>
+                <p>Release Date: {{ web_series.release_date }}</p>
+                <p>Rating: {{ web_series.rating }}</p>
+                <img src="{{ web_series.poster_image.url }}" alt="{{ web_series.title }}">
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

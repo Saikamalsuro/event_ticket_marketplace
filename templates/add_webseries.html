@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Web Series</title>
+</head>
+<body>
+    <h2>Add Web Series</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description"></textarea><br>
+        <label for="genre">Genre:</label><br>
+        <input type="text" id="genre" name="genre"><br>
+        <label for="release_date">Release Date:</label><br>
+        <input type="date" id="release_date" name="release_date"><br>
+        <label for="rating">Rating:</label><br>
+        <input type="number" id="rating" name="rating" step="0.1"><br>
+        <label for="poster_image">Poster Image:</label><br>
+        <input type="file" id="poster_image" name="poster_image"><br><br>
+        <button type="submit">Add Web Series</button>
+    </form>
+</body>
+</html>

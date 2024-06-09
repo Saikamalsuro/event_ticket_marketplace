@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Movies</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Movies</h1>
+        <div class="row">
+            {% for movie in movies %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ movie.fetch_poster_url }}" class="card-img-top" alt="{{ movie.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ movie.title }}</h5>
+                        <p class="card-text">{{ movie.description }}</p>
+                        <p><strong>Duration:</strong> {{ movie.duration }} minutes</p>
+                        <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+                        <p><strong>Genre:</strong> {{ movie.genre }}</p>
+                        <p><strong>Director:</strong> {{ movie.director }}</p>
+                        <p><strong>Cast:</strong> {{ movie.cast }}</p>
+                        <h6>Showtimes:</h6>
+                        <ul>
+                            {% for showtime in movie.showtime_set.all %}
+                            <li>{{ showtime.start_time }} - {{ showtime.end_time }} at {{ showtime.theater.name }}</li>
+                            {% endfor %}
+                        </ul>
+                        <h6>Tickets:</h6>
+                        <ul>
+                            {% for showtime in movie.showtime_set.all %}
+                                {% for ticket in showtime.ticket_set.all %}
+                                    <li>Seat: {{ ticket.seat_number }} Price: {{ ticket.price }} Status: {% if ticket.is_booked %}Booked{% else %}Available{% endif %}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                        <h6>Bookings:</h6>
+                        <ul>
+                            {% for showtime in movie.showtime_set.all %}
+                                {% for booking in showtime.booking_set.all %}
+                                    <li>User: {{ booking.user.username }} Booking Time: {{ booking.booking_time }} Total Amount: ${{ booking.total_amount }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Movies</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Movies</h1>
+        <div class="row">
+            {% for movie in movies %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ movie.fetch_poster_url }}" class="card-img-top" alt="{{ movie.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ movie.title }}</h5>
+                        <p class="card-text">{{ movie.description }}</p>
+                        <p><strong>Duration:</strong> {{ movie.duration }} minutes</p>
+                        <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+                        <p><strong>Genre:</strong> {{ movie.genre }}</p>
+                        <p><strong>Director:</strong> {{ movie.director }}</p>
+                        <p><strong>Cast:</strong> {{ movie.cast }}</p>
+                        <h6>Showtimes:</h6>
+                        <ul>
+                            {% for showtime in movie.showtime_set.all %}
+                            <li>{{ showtime.start_time }} - {{ showtime.end_time }} at {{ showtime.theater.name }}</li>
+                            {% endfor %}
+                        </ul>
+                        <h6>Tickets:</h6>
+                        <ul>
+                            {% for showtime in movie.showtime_set.all %}
+                                {% for ticket in showtime.ticket_set.all %}
+                                    <li>Seat: {{ ticket.seat_number }} Price: {{ ticket.price }} Status: {% if ticket.is_booked %}Booked{% else %}Available{% endif %}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                        <h6>Bookings:</h6>
+                        <ul>
+                            {% for showtime in movie.showtime_set.all %}
+                                {% for booking in showtime.booking_set.all %}
+                                    <li>User: {{ booking.user.username }} Booking Time: {{ booking.booking_time }} Total Amount: ${{ booking.total_amount }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html> -->

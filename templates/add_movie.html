@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Movie</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: skyblue; /* Example color, change to your preference */
+        }
+        .form-group {
+            border: none; /* Remove default border */
+            border-radius: 15px; /* Add small curves to the edges */
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: white; /* Ensure the form groups have a white background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for better appearance */
+        }
+        .form-group-small {
+            height: 2.5cm; /* Set height to 2.5cm for smaller boxes */
+            padding: 10px; /* Smaller padding for smaller boxes */
+            margin-bottom: 20px;
+        }
+        .form-group-small textarea, .form-group-small input {
+            height: 100%; /* Ensure the textarea/input fills the height */
+        }
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Add Movie</h1>
+        <form method="post">
+            {% csrf_token %}
+            <h2>Movie Details</h2>
+            <div class="form-group">
+                <label for="title">Title</label>
+                {{ movie_form.title }}
+            </div>
+            <div class="form-group form-group-small">
+                <label for="description">Description</label>
+                {{ movie_form.description }}
+            </div>
+            <div class="form-group">
+                <label for="duration">Duration (in minutes)</label>
+                {{ movie_form.duration }}
+            </div>
+            <div class="form-group">
+                <label for="release_date">Release Date</label>
+                {{ movie_form.release_date }}
+            </div>
+            <div class="form-group">
+                <label for="genre">Genre</label>
+                {{ movie_form.genre }}
+            </div>
+            <div class="form-group">
+                <label for="director">Director</label>
+                {{ movie_form.director }}
+            </div>
+            <div class="form-group form-group-small">
+                <label for="cast">Cast</label>
+                {{ movie_form.cast }}
+            </div>
+
+            <h2>Theater Details</h2>
+            <div class="form-group">
+                <label for="name">Name</label>
+                {{ theater_form.name }}
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                {{ theater_form.location }}
+            </div>
+            <div class="form-group">
+                <label for="capacity">Capacity</label>
+                {{ theater_form.capacity }}
+            </div>
+            <div class="form-group">
+                <label for="contact_number">Contact Number</label>
+                {{ theater_form.contact_number }}
+            </div>
+
+            <h2>Showtime Details</h2>
+            <div class="form-group">
+                <label for="start_time">Start Time</label>
+                {{ showtime_form.start_time }}
+            </div>
+            <div class="form-group">
+                <label for="end_time">End Time</label>
+                {{ showtime_form.end_time }}
+            </div>
+
+            <h2>Ticket Details</h2>
+            <div class="form-group">
+                <label for="seat_number">Seat Number</label>
+                {{ ticket_form.seat_number }}
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                {{ ticket_form.price }}
+            </div>
+            <div class="form-group">
+                <label for="is_booked">Is Booked</label>
+                {{ ticket_form.is_booked }}
+            </div>
+
+            <h2>Booking Details</h2>
+            <div class="form-group">
+                <label for="user">User</label>
+                {{ booking_form.user }}
+            </div>
+            <div class="form-group">
+                <label for="showtime">Showtime</label>
+                {{ booking_form.showtime }}
+            </div>
+            <div class="form-group">
+                <label for="tickets">Tickets</label>
+                {{ booking_form.tickets }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Movie</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

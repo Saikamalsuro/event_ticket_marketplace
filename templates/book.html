@@ -1,0 +1,277 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event ticket Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+        .card {
+            transition: box-shadow 0.3s;
+            width: 100%;
+            height: auto;
+            background-color: #333;
+            border: 1px solid orange;
+            border-radius: 8px;
+            color: orange;
+        }
+        .card:hover {
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .card-title {
+            color: #ffc107;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .card-text {
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .btn-primary {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #333;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffca28;
+            border-color: #ffca28;
+            color: #333;
+        }
+
+        .myNav {
+            background-color: yellow;
+        }
+        .navbar-custom .nav-link {
+            color: black !important;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .navbar-custom .navbar-brand {
+            color: black !important;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .navbar-custom .nav-link:hover {
+            color: orange !important;
+        }
+        body {
+            background-color: white;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: orange;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+            background-color: #444;
+            color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        .form-group label {
+            color: orange;
+        }
+
+        .head {
+            color: #ffc107;
+        }
+
+        .modal-content {
+            background-color: rgb(226, 239, 251);
+        }
+
+        .modal-title, .modal-body p, .modal-body h1 {
+            color: rgb(35, 12, 109);
+        }
+
+        .list-group-item {
+            background-color: #333;
+            color: orange;
+            border: 1px solid orange;
+        }
+
+        .list-group-item p {
+            margin: 0;
+        }
+
+        .list-group-item span {
+            font-weight: bold;
+        }
+
+        .text-center button {
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom myNav">
+        <a class="navbar-brand" href="#">Booking</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+        <!-- Booking Form -->
+        <form method="post" action="/bill">
+            {% csrf_token %}
+            <div class="container" id="yo">
+                <div class="cols my-4">
+                    <h2 style="text-align : center" class="head my-4">User Details</h2>
+                    <div class="form-group col-md-12">
+                        <label for="billname">Full Name:</label>
+                        <input type="text" class="form-control" id="billname" name="billname" placeholder="Full Name">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="billemail">Email:</label>
+                            <input type="email" class="form-control" id="billemail" name="billemail" placeholder="name@gmail.com">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="billphone">Phone Number:</label>
+                            <input type="tel" class="form-control" id="billphone" name="billphone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="billaddress">Address:</label>
+                        <input type="text" class="form-control" id="billaddress" name="billaddress" placeholder="COEP">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="billcity">City:</label>
+                            <input type="text" class="form-control" id="billcity" name="billcity">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">State:</label>
+                            <select id="inputState" name="billstate" class="form-control">
+                                <option selected>Choose...</option>
+                                <option>Maharashtra</option>
+                                <option>Delhi</option>
+                                <option>Andra Pradesh</option>
+                                <option>Gujarat</option>
+                                <option>Tamil Nadu</option>
+                                <option>Kerala</option>
+                                <option>Karnataka</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputZip">Pin Code:</label>
+                            <input type="text" class="form-control" id="inputZip" name="billzip">
+                        </div>
+                    </div>
+                   <h2 style="text-align : center" class="head my-4">Event Details</h2>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                             <label for="cars11">Event Chosen (For Confirmation):</label>
+                            <select id="cars11" name="cars11" class="form-control" onchange="showSubOptions()">
+                                <option selected="selected" disabled>Choose...</option>
+                                <option value="movie">Movie</option>
+                                <option value="ipl">IPL</option>
+                                <option value="travel">Travel</option>
+                                <option value="hotel">Hotel</option>
+                            </select>
+                            <select id="sub-options" name="sub-options" class="form-control" style="display:none;">
+                                <!-- Sub-options will be populated here -->
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="ticket-quantity">Ticket Quantity:</label>
+                            <input type="number" class="form-control" id="ticket-quantity" name="ticket-quantity" min="1" max="10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalLong" id="showre" onclick="calculate()">Display Bill</button>
+                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-content" style="background-color: rgb(226, 239, 251);">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Receipt:</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="printThis">
+                                <h1 style="text-align:center; background: -webkit-linear-gradient(#77f7f1, #094240);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Thanks for Booking!</h1><br>
+                                <p id="n1" class="p2" style="text-align:center; font-size: 25px; font-weight:bold; color:rgb(35, 12, 109)">Customer Name: <span></span></p>
+                                <p style="text-align:center"><span id="l1" class="p3" style="text-align:center; font-size: 25px; font-weight:bold; color:rgb(35, 12, 109)">From: <span></span></span> &nbsp;&nbsp;&nbsp;--------->&nbsp;&nbsp;&nbsp;
+                                    <span id="l2" class="p3" style="text-align:center; font-size: 25px; font-weight:bold; color:rgb(35, 12, 109)">To: <span></span></span></p>
+                                <p id="d2" class="p8" style="text-align:center; font-size: 25px; font-weight:bold; color:rgb(35, 12, 109)">No. of days for rent: <span></span></p>
+                                <p id="d1" class="p2" style="text-align:center; font-size: 25px; font-weight:bold; color:rgb(35, 12, 109)">Pickup date: <span></span></p>
+                                <p style="text-align:center; font-size: 23px;">
+                                    <span style="font-size:30px;font-weight:bold">Car Details:- </span><br><span style="font-weight:bold" id="crs1">Car: <span></span> </span><br><span style="font-weight:bold" id="crs2">Car color: <span></span> </span><br><br>
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="btnPrint">Download Receipt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Confirm Booking</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function showSubOptions() {
+            var mainSelect = document.getElementById("cars11");
+            var subSelect = document.getElementById("sub-options");
+
+            // Clear previous sub-options
+            subSelect.innerHTML = "";
+
+            if (mainSelect.value === "movie") {
+                subSelect.style.display = "block";
+
+                var options = [
+                    { value: "action", text: "RRR" },
+                    { value: "comedy", text: "KGF" },
+                    { value: "drama", text: "bahubali" },
+                    { value: "action", text: "Mirchi" },
+                    { value: "comedy", text: "Devara" },
+                    { value: "drama", text: "Animal" }
+                ];
+
+                for (var i = 0; i < options.length; i++) {
+                    var opt = document.createElement("option");
+                    opt.value = options[i].value;
+                    opt.text = options[i].text;
+                    subSelect.appendChild(opt);
+                }
+            } else {
+                subSelect.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!-- events/templates/events/cancel_ticket.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Ticket</title>
+</head>
+<body>
+    <h1>Cancel Ticket</h1>
+    <p>You are about to cancel your ticket for {{ ticket.event.name }}</p>
+    <form action="{% url 'cancel_ticket' ticket.id %}" method="post">
+        {% csrf_token %}
+        <!-- Add form fields for canceling ticket -->
+        <button type="submit">Confirm Cancelation</button>
+    </form>
+</body>
+</html>

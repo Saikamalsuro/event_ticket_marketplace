@@ -1,0 +1,35 @@
+<!-- templates/show_anime.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Anime List</h2>
+        <div class="row">
+            {% for anime in animes %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ anime.poster_image.url }}" class="card-img-top" alt="{{ anime.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ anime.title }}</h5>
+                            <p class="card-text">{{ anime.description }}</p>
+                            <p><strong>Genre:</strong> {{ anime.genre }}</p>
+                            <p><strong>Release Date:</strong> {{ anime.release_date }}</p>
+                            <p><strong>Duration:</strong> {{ anime.duration }}</p>
+                            <p><strong>Rating:</strong> {{ anime.rating }}</p>
+                            <p><strong>Screening Time:</strong> {{ anime.screening_time }}</p>
+                            <p><strong>Available Seats:</strong> {{ anime.available_seats }}</p>
+                            <p><strong>Booked Seats:</strong> {{ anime.booked_seats }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

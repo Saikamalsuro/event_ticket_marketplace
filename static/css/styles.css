@@ -1,0 +1,27 @@
+/* static/css/styles.css */
+
+/* Custom styles for the event list page */
+.container {
+    margin-top: 50px; /* Adjust as needed */
+}
+
+/* Optional: Custom styles for navbar, header, and footer */
+.navbar-custom {
+    background-color: #007bff; /* Bootstrap primary color */
+}
+
+.header {
+    background-color: #f8f9fa; /* Bootstrap light gray background */
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer {
+    background-color: #007bff; /* Bootstrap dark background */
+    color: #fff; /* White text color */
+    padding: 1px 0; /* Reduced padding */
+    text-align: center;
+    position: fixed; /* Set footer to bottom */
+    width: 100%; /* Full width */
+    bottom: 0; /* Stick to the bottom */
+}
